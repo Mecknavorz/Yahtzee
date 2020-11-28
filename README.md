@@ -16,12 +16,19 @@ Currently implemented features are:
 - `draw(Hand, FHand).` where:
    - Hand is the current hand, which has less than 5 dice
    - Fhand is the new hand with a full five dice again
+- `determine(Hand, Type).` determines if a hand is a given type, e.g. yahzee, small straight etc., and returns that type
+- A few types of score functions for different hands
+   - `score(Type, Score).` which works for: Yahtzee, large straight, small straight an full house
+   - `score(Type, Hand, Score).` which works for: three and four of a kind as well as chance
+   - `score(free, Val, Hand, Score).` which is used for the upper card section, e.g. ones, twos threes, etc. where Val is the type of die you want to score for
+- `newSheet(Sheet)` which generates a blank score sheet, all indices are initialized at -1 since 0 is a valid score and we want to know what's been used
+- `storeScore(Sheet, Type, Score, NSheet).` which updates the sheet to have a score of `Score` for the `Type` space
+- `getScore(Sheet, Type, NSheet).` has two versions because I haven't decided which I like more
+   - One takes Type as an index value (int) of the score sheet list and returns the score at that index
+   - The second (which is commented out by default) takes Type as the actually hand type and converts it to an index value an returns the score there
 
 ## What features are planned?
 Currently planned features/ones that are being worked on are:
-- Hand detection to show the rank of a hand
-- score calculation, to keep determine the actual point score of a hand
-- game tracker, to keep track of hands filled out on a standard chart
 - game AI, to take use the game tracker and make a probabilistic decision tree based off that and play the game autonomously
 - manual mode, so that dice and hands can be input manually
 - rules, to switch on or off optional rules and essentially change the game between Yahtzee of yacht dice depending on what we want to see
