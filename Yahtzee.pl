@@ -124,10 +124,10 @@ determine([A,B,C,D,E], three_of_a_kind) :- 	%some versions don't have this so I 
 determine([_,_,_,_,_], free). 			%this is used when there's not a explicitly defined score to the hand
 
 %score function gives the point value of a given hands
-score(yahtzee, 50).					%for normal Yahtzee a Yahtzee is worth 50 points
-score(large_straight, 40).				%for normal Yahtzee large straight is worth 40 points
-score(small_straight, 30).				%for normal Yahtzee small striaght is worth 30 points
-score(full_house, 25).					%for normal Yahtzee full house is worth 25 points
+score(yahtzee, 50).			%for normal Yahtzee a Yahtzee is worth 50 points
+score(large_straight, 40).		%for normal Yahtzee large straight is worth 40 points
+score(small_straight, 30).		%for normal Yahtzee small striaght is worth 30 points
+score(full_house, 25).			%for normal Yahtzee full house is worth 25 points
 score(four_of_a_kind, Hand, Score) :-	%for normal Yahtzee four of a kind is worth the sum of the hand
 	sumlist(Hand, Score).
 score(three_of_a_kind, Hand, Score) :-	%for normal Yahtzee three of a kind is worth the sum of the hand
@@ -135,8 +135,8 @@ score(three_of_a_kind, Hand, Score) :-	%for normal Yahtzee three of a kind is wo
 score(chance, Hand, Score) :-		%Chance is worth the sum of the dice in the hand
 	sumlist(Hand, Score).
 score(free, Val, Hand, Score) :-	%for the uppercard we need to determine the # of val in the hand and sum it up
-	count(Val, Hand, Base),
-	Score is Val*Base.
+	count(Val, Hand, Base),		%count the number of occurences
+	Score is Val*Base.		%we know the score for the hand is then the number of occurences times the dice value
 
 %used to count the number of occurences in an array
 %used specfically in the free score calculation
