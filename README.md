@@ -26,6 +26,8 @@ Currently implemented features are:
 - `getScore(Sheet, Type, NSheet).` has two versions because I haven't decided which I like more
    - One takes Type as an index value (int) of the score sheet list and returns the score at that index
    - The second (which is commented out by default) takes Type as the actually hand type and converts it to an index value an returns the score there
+- `toRemove(Hand, Sheet, Goal, Toss)` tells you which dice to `Toss` from `Hand` to give you the best chance at getting to `Goal`. The reason it also takes the `Sheet` is that some hands require a knowledge of what the current dice sheet looks like in order to determine the best dice to `Toss` to get to `Goal`
+   - this function contains a bunch of sub functions: `smax/3`, `fhmax/2`, and `lomax/3` which each optimize for different parts of the lower card.
 
 ## What features are planned?
 Currently planned features/ones that are being worked on are:
